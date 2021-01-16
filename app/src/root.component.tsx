@@ -1,10 +1,26 @@
+import {
+  ApolloClient,
+  ApolloProvider,
+  NormalizedCacheObject,
+} from "@apollo/client";
 import React from "react";
-import styled from "styled-components";
+import ExchangeRates from "./exchange-rates.component";
 
-const Title = styled.h1`
-  color: red;
-`;
+declare global {
+  interface Window {
+    ssrApolloClient: ApolloClient<NormalizedCacheObject>;
+  }
+}
 
-export default function Root(props) {
-  return <Title>{props.name} is mounted!</Title>;
+type Props = {
+  apolloClient?: ApolloClient<NormalizedCacheObject>;
+  name: string;
+};
+
+export default function Root({ apolloClient, name }: Props) {
+  return (
+    <ApolloProvider client={apolloClient || window.ssrApolloClient}>
+      <ExchangeRates />
+    </ApolloProvider>
+  );
 }
