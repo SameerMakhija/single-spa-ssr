@@ -10,7 +10,8 @@
       {
         "useESModules": true
       }
-    ]
+    ],
+    "babel-plugin-styled-components"
   ],
   "env": {
     "test": {
@@ -21,7 +22,8 @@
             "targets": "current node"
           }
         ]
-      ]
+      ],
+      "plugins": ["babel-plugin-styled-components"]
     }
   }
 }

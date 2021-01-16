@@ -1,5 +1,10 @@
 import React from "react";
+import styled from "styled-components";
+
+const Title = styled.h1`
+  color: red;
+`;
 
 export default function Root(props) {
-  return <section>{props.name} is mounted!</section>;
+  return <Title>{props.name} is mounted!</Title>;
 }
