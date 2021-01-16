@@ -9,6 +9,10 @@ module.exports = (webpackConfigEnv, argv) => {
     argv,
   });
 
+  defaultConfig.plugins = defaultConfig.plugins.filter(
+    (plugin) => plugin.constructor.name !== "CleanWebpackPlugin"
+  );
+
   return webpackMerge.smart(defaultConfig, {
     // modify the webpack config however you'd like to by adding to this object
   });
